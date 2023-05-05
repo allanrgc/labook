@@ -7,7 +7,7 @@ CREATE TABLE users (
         role TEXT DEFAULT('NORMAL') NOT NULL,
         created_at TEXT DEFAULT(DATETIME('now', 'localtime')) NOT NULL
     );
-
+SELECT * FROM users;
 CREATE TABLE posts(
         post_id TEXT PRIMARY KEY UNIQUE NOT NULL,
         creator_id TEXT NOT NULL,

@@ -1,6 +1,6 @@
 import { PostDatabase } from "../database/PostDatabase";
 import { UserDatabase } from "../database/UserDatabase";
-import { Post } from "../models/Posts";
+import { Post } from "../models/Post";
 
 
 export class PostBusiness{
