@@ -1,3 +1,23 @@
+export interface PostDB {
+    id: string,
+    creator_id: string,
+    content: string,
+    likes: number,
+    dislikes: number,
+    created_at: string,
+    updated_at: string
+}
+
+export interface PostModel {
+    id: string,
+    creator_id: string,
+    content: string,
+    likes: number,
+    dislikes: number
+    createdAt: string,
+    updatedAt: string
+}
+
 export class Post{
     constructor(
         private id: string,
@@ -5,8 +25,8 @@ export class Post{
         private content: string,
         private likes: number,
         private dislikes: number,
-        private created_at: string,
-        private updated_at: string
+        private createdAt: string,
+        private updatedAt: string
     ){}
 
     public getId(): string {
@@ -39,17 +59,42 @@ export class Post{
     public setDislikes(value: number) {
         this.dislikes = value;
     }
-    public getCreatedat(): string {
-        return this.created_at;
+    public getCreatedAt(): string {
+        return this.createdAt;
     }
-    public setCreated_at(value: string) {
-        this.created_at = value;
+    public setCreatedAt(value: string) {
+        this.createdAt = value;
     }
-    public getUpdated_at(): string {
-        return this.updated_at;
+    public getUpdatedAt(): string {
+        return this.updatedAt;
     }
-    public setUpdated_at(value: string) {
-        this.updated_at = value;
+    public setUpdatedAt(value: string) {
+        this.updatedAt = value;
+    }
+
+
+    public toDBModel(): PostDB {
+        return {
+            id: this.id,
+            creator_id: this.creator_id,
+            content: this.content,
+            likes: this.likes,
+            dislikes: this.dislikes,
+            created_at: this.createdAt,
+            updated_at: this.updatedAt
+        }
+    }
+
+    public toBusinessModel(): PostModel {
+        return {
+            id: this.id,
+            creator_id:this.creator_id,
+            content: this.content,
+            likes: this.likes,
+            dislikes: this.dislikes,
+            createdAt: this.createdAt,
+            updatedAt: this.updatedAt
+        }
     }
     
 }
