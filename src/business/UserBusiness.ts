@@ -58,12 +58,6 @@ console.log(payload)
         // const { id, name, email, password } = input
         const { name, email, password } = input
     
-        // const userDBExists = await this.userDatabase.findUserById(id)
-    
-        // if (userDBExists) {
-        //   throw new BadRequestError("'id' já existe")
-        // }
-    
         console.log(this)
         const id = this.idGenerator.generate()
     
@@ -81,14 +75,12 @@ console.log(payload)
         const newUserDB = newUser.toDBModel()
         await this.userDatabase.insertUser(newUserDB)
     
-        // modelagem do payload do token
         const tokenPayload: TokenPayload = {
           id: newUser.getId(),
           name: newUser.getName(),
           role: newUser.getRole()
         }
     
-        // criação do token
         const token = this.tokenManager.createToken(tokenPayload)
     
         const output: SignupOutputDTO = {
@@ -109,10 +101,6 @@ console.log(payload)
         if (!userDB) {
           throw new NotFoundError("'email' não encontrado")
         }
-    
-        // if (password !== userDB.password) {
-        //   throw new BadRequestError("'email' ou 'password' incorretos")
-        // }
     
         const isPasswordCorrect = await this.hashManager.compare(password, userDB.password)
     
@@ -136,7 +124,6 @@ console.log(payload)
           role: user.getRole()
         }
     
-        // criação do token
         const token = this.tokenManager.createToken(tokenPayload)
     
         const output: LoginOutputDTO = {

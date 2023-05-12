@@ -14,22 +14,10 @@ CREATE TABLE posts(
         content TEXT,
         likes INTEGER DEFAULT(0) NOT NULL,
         dislikes INTEGER DEFAULT(0) NOT NULL,
-        -- comments INTEGER DEFAULT(0),
         created_at TEXT NOT NULL,
         updated_at TEXT,
         FOREIGN KEY (creator_id) REFERENCES users(id)
     );
-
--- CREATE TABLE comments (
---         comment_id TEXT PRIMARY KEY UNIQUE NOT NULL,
---         user_comment_id TEXT NOT NULL,
---         post_id TEXT NOT NULL,
---         content TEXT NOT NULL,
---         likes INTEGER DEFAULT(0) NOT NULL,
---         created_at TEXT DEFAULT(DATETIME('now', 'localtime')) NOT NULL,
---          FOREIGN KEY (user_comment_id) REFERENCES users(id),
---          FOREIGN KEY (post_id) REFERENCES posts(post_id)
---     );
 
 CREATE TABLE likes_dislikes(
         user_id TEXT NOT NULL,
